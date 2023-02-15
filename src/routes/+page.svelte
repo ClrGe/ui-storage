@@ -20,14 +20,19 @@
     function handleAddFile(err, fileItem) {
         console.log('A file has been added', fileItem);
     }
+
+    function handleServerProcessFile(err, fileItem, status, response) {
+        console.log('A file has been processed by the server', fileItem, status, response);
+    }
 </script>
 
 <div class="app">
-
     <FilePond bind:this={pond} {name}
               server="http://localhost:3000/upload"
               allowMultiple={true}
               oninit={handleInit}
-              onaddfile={handleAddFile}/>
+              onaddfile={handleAddFile}
+                onprocess={handleServerProcessFile}
+    />
 
 </div>
