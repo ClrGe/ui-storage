@@ -72,7 +72,7 @@
   <NavUl {hidden} {divClass} {ulClass}>
     <NavLi href="/">Accueil</NavLi>
     <NavLi href="/pages/about">À propos</NavLi>
-    <NavLi href="/ipfs">Services</NavLi>
+    <NavLi href="/upload">Services</NavLi>
   </NavUl>
 </Navbar>
 <Drawer

@@ -1,16 +1,33 @@
+<style global>
+    @import '../../node_modules/filepond/dist/filepond.css';
+    @import '../../node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+</style>
+
 <script>
-    import {Button} from "flowbite-svelte";
-    import {goto} from "$app/navigation";
-    function redirect(path){
-        goto(path);
+    import FilePond, { registerPlugin } from 'svelte-filepond';
+    import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
+    import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
+    registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
+    // a reference to the component, used to call FilePond methods
+    // for example `pond.getFiles()` will return the active files
+    let pond;
+    // the name to use for the internal file input
+    let name = 'filepond';
+    // handle filepond events
+    function handleInit() {
+        console.log('FilePond has initialised');
+    }
+    function handleAddFile(err, fileItem) {
+        console.log('A file has been added', fileItem);
     }
 </script>
 
-<div class="h-screen">
-    <h1>Dépôt de fichiers</h1>
-   <Button on:click={goto("/ipfs")}>Déposer un fichier</Button>
-    <Button on:click={goto("/about")}>À propos de ce service</Button>
-    <Button on:click={goto("/ipfs")}>Mon compte</Button>
-    <Button on:click={goto("/ipfs")}>Paramètres</Button>
-</div>
+<div class="app">
 
+    <FilePond bind:this={pond} {name}
+              server="http://localhost:3000/upload"
+              allowMultiple={true}
+              oninit={handleInit}
+              onaddfile={handleAddFile}/>
+
+</div>
