@@ -17,8 +17,6 @@
     let pond;
     let name = 'filepond';
     let selected;
-    export let data;
-    let transactions = data.transactions;
 
     // handle filepond events
     function handleInit() {
@@ -31,6 +29,23 @@
     function handleServerProcessFile(err, fileItem, status, response) {
         console.log('A file has been processed by the server', fileItem, status, response);
     }
+
+    async function getTransactions(){
+
+    try {
+        const res = await fetch(env.PUBLIC_SERVER+`/transactions/`, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        const transactions = await res.json();
+        return { transactions };
+    } catch (e) {
+        console.log(e);
+
+    }}
+
+    let transactions = getTransactions();
 </script>
 
 <div class="app container flex flex-col">
