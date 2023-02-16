@@ -70,7 +70,7 @@
 {#if sessionValue === "true"}
   <Navbar let:hidden let:toggle >
     <NavHamburger on:click={toggleDrawer} btnClass="ml-3 lg:hidden" />
-    <NavBrand href="/" class="lg:ml-64">
+    <NavBrand href="/" class="lg:ml-16">
       <Cog />
       <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white pl-4">
         Service de dépôt
@@ -91,65 +91,65 @@
     </NavUl>
 
   </Navbar>
-  <Drawer
-    transitionType="fly"
-    {backdrop}
-    {transitionParams}
-    bind:hidden={drawerHidden}
-    bind:activateClickOutside
-    width="w-64"
-    class="overflow-scroll pb-32"
-    id="sidebar"
-  >
-    <div class="flex items-center">
-      <CloseButton on:click={() => (drawerHidden = true)} class="mb-4 dark:text-white lg:hidden" />
-    </div>
-    <Sidebar asideClass="w-54">
-      <SidebarWrapper divClass="overflow-y-auto py-4 px-3 rounded dark:bg-gray-800">
-        <SidebarGroup>
-          <SidebarItem label="Accueil" href="/" on:click={toggleSide} active={activeUrl === `/`} />
-          <SidebarItem
-            label="À propos"
-            href="/pages/about"
-            {spanClass}
-            on:click={toggleSide}
-            active={activeUrl === '/pages/about'}
-          />
-          <SidebarDropdownWrapper label="Services">
-            <SidebarItem
-              label="IPFS"
-              href={`/ipfs`}
-              {spanClass}
-              on:click={toggleSide}
-              active={activeUrl === '/ipfs'}
-            />
-            <SidebarItem
-              label="FileSystem"
-              href="/fs"
-              {spanClass}
-              on:click={toggleSide}
-              active={activeUrl === '/fs'}
-            />
-            <SidebarItem
-                    label="AWS S3"
-                    href="/s3"
-                    {spanClass}
-                    on:click={toggleSide}
-                    active={activeUrl === '/s3'}
-            />
-          </SidebarDropdownWrapper>
-        </SidebarGroup>
-      </SidebarWrapper>
-    </Sidebar>
-  </Drawer>
-  <div class="flex px-4 mx-auto w-full">
-    <main class="lg:ml-72 w-full mx-auto">
+<!--  <Drawer-->
+<!--    transitionType="fly"-->
+<!--    {backdrop}-->
+<!--    {transitionParams}-->
+<!--    bind:hidden={drawerHidden}-->
+<!--    bind:activateClickOutside-->
+<!--    width="w-64"-->
+<!--    class="overflow-scroll  hidden  pb-32"-->
+<!--    id="sidebar"-->
+<!--  >-->
+<!--    <div class="flex items-center">-->
+<!--      <CloseButton on:click={() => (drawerHidden = true)} class="mb-4 dark:text-white lg:hidden" />-->
+<!--    </div>-->
+<!--    <Sidebar asideClass="w-54">-->
+<!--      <SidebarWrapper divClass="overflow-y-auto py-4 px-3 rounded dark:bg-gray-800">-->
+<!--        <SidebarGroup>-->
+<!--          <SidebarItem label="Accueil" href="/" on:click={toggleSide} active={activeUrl === `/`} />-->
+<!--          <SidebarItem-->
+<!--            label="À propos"-->
+<!--            href="/pages/about"-->
+<!--            {spanClass}-->
+<!--            on:click={toggleSide}-->
+<!--            active={activeUrl === '/pages/about'}-->
+<!--          />-->
+<!--          <SidebarDropdownWrapper label="Services">-->
+<!--            <SidebarItem-->
+<!--              label="IPFS"-->
+<!--              href={`/ipfs`}-->
+<!--              {spanClass}-->
+<!--              on:click={toggleSide}-->
+<!--              active={activeUrl === '/ipfs'}-->
+<!--            />-->
+<!--            <SidebarItem-->
+<!--              label="FileSystem"-->
+<!--              href="/fs"-->
+<!--              {spanClass}-->
+<!--              on:click={toggleSide}-->
+<!--              active={activeUrl === '/fs'}-->
+<!--            />-->
+<!--            <SidebarItem-->
+<!--                    label="AWS S3"-->
+<!--                    href="/s3"-->
+<!--                    {spanClass}-->
+<!--                    on:click={toggleSide}-->
+<!--                    active={activeUrl === '/s3'}-->
+<!--            />-->
+<!--          </SidebarDropdownWrapper>-->
+<!--        </SidebarGroup>-->
+<!--      </SidebarWrapper>-->
+<!--    </Sidebar>-->
+<!--  </Drawer>-->
+  <div class="flex px-4 h-screen w-screen bg-gray-200 ">
+    <main class=" w-3/4  ml-auto mr-auto">
       <slot />
     </main>
   </div>
   {:else}
-  <div class="!bg-black h-screen absolute w-full mt-0">
-    <Login/>
+  <div class="!bg-black h-screen absolute mt-0">
+    <Login />
 
   </div>
 {/if}

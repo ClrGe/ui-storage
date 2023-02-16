@@ -23,7 +23,7 @@
                 }
             )        })
         if (res.ok) {
-            session.set("true")
+            await otpForm()
             goto('/')
         } else {
             alert("Identifiants incorrects")
@@ -44,18 +44,19 @@
                 }
             )        })
         if (res.ok) {
-            session.set("true")
 
-            goto('/')
+        await otpForm()
         } else {
             alert("Erreur lors de l'inscription")
         }
     }
 
     // toggle show registration form
-    async function toggleForm() {
+    async function otpForm() {
         const form = document.querySelector(".form");
-        form.classList.toggle("hidden");
+        form.classList.add("hidden");
+        const otp = document.querySelector(".otp");
+        otp.classList.remove("hidden");
 
     }
     async function showForm(){
@@ -63,6 +64,11 @@
         form.classList.remove("hidden");
         const login = document.querySelector(".login");
         login.classList.add("hidden");
+    }
+
+    async function redirect(){
+        session.set("true")
+        goto('/')
     }
 </script>
 
@@ -107,6 +113,16 @@
         </Label>
 
         <Button class="w-full mt-2 !bg-red-800 hover:!scale-110" on:click={register}>S'inscrire</Button>
+
+    </Card>
+
+    <Card class="!shadow-lg !bg-gray-200 !text-gray-600 otp hidden">
+    <Label class="space-y-2">
+        <span class="font-extrabold  !text-gray-500 ">OTP</span>
+        <Input id="otp" class="!mb-4 border-none !bg-gray-100 !text-gray-900 !shadow-lg py-2" name="otp" placeholder="1234" required type="text"/>
+    </Label>
+
+    <Button class="w-full mt-2 !bg-red-800 hover:!scale-110" on:click={redirect} >Confirmer</Button>
 
     </Card>
 </div>

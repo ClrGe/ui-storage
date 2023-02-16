@@ -33,7 +33,6 @@
 
 <div class="app container flex flex-col">
 
-
         <Button class="mt-16 !bg-gray-900"><Chevron>Options</Chevron></Button>
         <Dropdown class="w-60 p-3 space-y-1 text-sm">
             <li class="rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
@@ -63,20 +62,20 @@
 
 
     <Table striped={true} bordered={true} hover={true} data={transactions} >
-        <TableHead>
-            <TableHeadCell>Reference</TableHeadCell>
-            <TableHeadCell>Hash</TableHeadCell>
-            <TableHeadCell>Lien</TableHeadCell>
-            <TableHeadCell>Date</TableHeadCell>
+        <TableHead class="!border-gray-800 border-2 bg-gray-200 !text-gray-600">
+            <TableHeadCell class="border-gray-800  border-2">Reference</TableHeadCell>
+            <TableHeadCell class="border-gray-800 border-2">Hash</TableHeadCell>
+            <TableHeadCell class=" border-gray-800 border-2">Lien</TableHeadCell>
+            <TableHeadCell class="border-gray-800 border-2">Date</TableHeadCell>
         </TableHead>
-        <TableBody class="divide-y">
+        <TableBody class=" divide-y">
 
             {#each transactions as transaction}
-                <TableBodyRow>
-                    <TableBodyCell>{transaction.name}</TableBodyCell>
-                    <TableBodyCell>{transaction.hash}</TableBodyCell>
-                    <TableBodyCell><a>{transaction.address}</a></TableBodyCell>
-                    <TableBodyCell>{transaction.date}</TableBodyCell>
+                <TableBodyRow >
+                    <TableBodyCell class="border">{transaction.name}</TableBodyCell>
+                    <TableBodyCell class="border">{transaction.hash}</TableBodyCell>
+                    <TableBodyCell class="border"><a>{transaction.address}</a></TableBodyCell>
+                    <TableBodyCell class="border">{transaction.date}</TableBodyCell>
                 </TableBodyRow>
             {/each}
         </TableBody>
