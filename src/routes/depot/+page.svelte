@@ -35,7 +35,9 @@
     try {
         const res = await fetch(env.PUBLIC_SERVER+`/transactions/`, {
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'X-Content-Type-Options': 'nosniff'
+
             }
         });
         const transactions = await res.json();

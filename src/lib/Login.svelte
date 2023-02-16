@@ -14,7 +14,8 @@
         const res = await fetch(url, {
             method: 'post',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-Content-Type-Options': 'nosniff'
             },
 
             body: JSON.stringify(
@@ -36,7 +37,9 @@
         const res = await fetch(url, {
             method: 'post',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-Content-Type-Options': 'nosniff'
+
             },
             body: JSON.stringify(
                 {
