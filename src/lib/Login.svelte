@@ -1,6 +1,6 @@
 <script>
     import {session} from "../stores/stores.ts";
-    import {goto} from "$app/navigation";*
+    import {goto} from "$app/navigation";
     import {env} from '$env/dynamic/public';
     import {Button, Label, Input, Card, Dropdown, DropdownItem, DropdownDivider, Chevron} from "flowbite-svelte";
     let sessionValue;
