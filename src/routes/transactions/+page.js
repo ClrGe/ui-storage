@@ -1,8 +1,9 @@
+import {env} from '$env/dynamic/public';
+
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch }) {
-
     try {
-        const res = await fetch(`http://localhost:3000/transactions/`, {
+        const res = await fetch(env.PUBLIC_SERVER + `/transactions/`, {
             headers: {
                 "Content-Type": "application/json"
             }

@@ -9,6 +9,8 @@
     /** @type {import('./$types').PageData} */
     import FilePond, { registerPlugin } from 'svelte-filepond';
     import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
+    import {env} from '$env/dynamic/public';
+
     import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
     import {Button, Checkbox, Chevron, Dropdown, DropdownDivider, DropdownItem, Helper} from "flowbite-svelte";
     registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
@@ -52,7 +54,7 @@
         </Dropdown>
 
     <FilePond class="mt-6" bind:this={pond} {name}
-              server="http://localhost:3000/upload"
+              server= {env.PUBLIC_SERVER + "/upload"}
               allowMultiple={true}
               oninit={handleInit}
               onaddfile={handleAddFile}

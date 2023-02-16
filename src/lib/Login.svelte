@@ -1,6 +1,7 @@
 <script>
     import {session} from "../stores/stores.ts";
-    import {goto} from "$app/navigation";
+    import {goto} from "$app/navigation";*
+    import {env} from '$env/dynamic/public';
     import {Button, Label, Input, Card, Dropdown, DropdownItem, DropdownDivider, Chevron} from "flowbite-svelte";
     let sessionValue;
     session.subscribe(value => {
@@ -9,7 +10,7 @@
 
     async function login() {
 
-        let url =  "http://localhost:3000/login"
+        let url = env.PUBLIC_SERVER + "/login";
         const res = await fetch(url, {
             method: 'post',
             headers: {
@@ -30,7 +31,7 @@
         }
     }
     async function register() {
-        let url =  "http://localhost:3000/register"
+        let url =  env.PUBLIC_SERVER + "/register";
 
         const res = await fetch(url, {
             method: 'post',
