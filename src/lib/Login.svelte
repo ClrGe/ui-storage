@@ -59,6 +59,8 @@
     async function otpForm() {
         const form = document.querySelector(".form");
         form.classList.add("hidden");
+        const login = document.querySelector(".login");
+        login.classList.add("hidden");
         const otp = document.querySelector(".otp");
         otp.classList.remove("hidden");
 
