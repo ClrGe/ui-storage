@@ -1,44 +1,45 @@
 <script>
-    import {session} from "../../stores/stores.ts";
+    import {goto} from "$app/navigation";
+    import {Button, Label, Input, Card} from "flowbite-svelte";
 
-    import {env} from "$env/dynamic/public";
-   import {goto} from "$app/navigation";
-    let sessionValue;
-    session.subscribe(value => {
-        sessionValue = value;
-    });
-   async function login() {
-       let url =  "http://localhost:3000/login"
-       const res = await fetch(url, {
-           credentials: 'include',
-           method: 'post',
-           headers: {
-               'Content-Type': 'application/json'
-           },
+    async function register() {
+        let url =  "http://localhost:3000/register"
 
-           body: JSON.stringify(
-               {
-                   email: document.querySelector("input[name='email']").value,
-                   password: document.querySelector("input[name='password']").value
-               }
-           )
-       })
-       if (res.ok) {
-           session.set("true")
-           goto('/')
-       } else {
-           alert("Identifiants incorrects")
-       }
-   }
+        const res = await fetch(url, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(
+                {
+                    email: document.querySelector("input[name='email']").value,
+                    password: document.querySelector("input[name='password']").value
+                }
+            )        })
+        if (res.ok) {
+            goto('/')
+        } else {
+            alert("Identifiants incorrects")
+        }
+    }
 </script>
 
-<div>
-    <h1>Connexion</h1>
-    <form>
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email">
-        <label for="password">Mot de passe</label>
-        <input type="password" name="password" id="password">
-        <button type="button" on:click={login}>Se connecter</button>
-    </form>
+<div class=" flex flex-col items-center justify-center w-full h-full">
+
+    <Card class="!shadow-lg !bg-gray-200 !text-gray-600">
+        <div class="px-16 py-4"><h1 class="text-2xl font-extrabold text-center ">S'inscrire</h1></div>
+        <Label class="!mt-4  space-y-2">
+            <span class="font-extrabold  !text-gray-400">Email</span>
+            <Input class="!mb-2 py-2 !w-full !bg-gray-100 !shadow-lg  " id="email" name="email" placeholder="exemple@toto.fr" required type="email"/>
+        </Label>
+        <Label class="!mt-4  space-y-2">
+            <span class="font-extrabold  !text-gray-400">Email</span>
+            <Input class="!mb-2 py-2 !w-full !bg-gray-100 !shadow-lg  " id="email" name="email" placeholder="exemple@toto.fr" required type="email"/>
+        </Label>
+        <Label class="!mt-4  space-y-2">
+            <span class="font-extrabold  !text-gray-400 ">Mot de passe</span>
+            <Input id="password" class="!mb-2 !bg-gray-100 !shadow-lg py-2" name="password" placeholder="•••••" required type="password"/>
+        </Label>
+        <Button class="w-full !bg-gray-900 hover:!bg-gray-300 hover:!text-black"  type="submit" on:click={register} >S'inscrire</Button>
+    </Card>
 </div>
