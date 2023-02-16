@@ -3,25 +3,7 @@
     import {env} from "$env/dynamic/public";
 
     /** @type {import('../../../../.svelte-kit/types/src/routes').PageData} */
-async function getTransactions() {
-        async function load({ fetch }) {
-            try {
-                const res = await fetch(env.PUBLIC_SERVER + `/transactions/`, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        'X-Content-Type-Options': 'nosniff'
-
-                    }
-                });
-                const transactions = await res.json();
-                return { transactions };
-            } catch (e) {
-                console.log(e);
-
-            }
-        }
-}
-let transactions = getTransactions();
+    transactions
 </script>
 
 <div>

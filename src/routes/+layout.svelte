@@ -67,7 +67,7 @@
 </script>
 
 <svelte:window bind:innerWidth={width}/>
-{#if sessionValue === "true"}
+{#if sessionValue !== "true"}
   <Navbar let:hidden let:toggle >
     <NavHamburger on:click={toggleDrawer} btnClass="ml-3 lg:hidden" />
     <NavBrand href="." class="lg:ml-16">

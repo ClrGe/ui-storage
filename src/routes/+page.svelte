@@ -31,22 +31,8 @@
         console.log('A file has been processed by the server', fileItem, status, response);
     }
 
-    async function getTransactions(){
-
-    try {
-        const res = await fetch(env.PUBLIC_SERVER+`/transactions/`, {
-            headers: {
-                "Content-Type": "application/json",
-                'X-Content-Type-Options': 'nosniff'
-
-            }
-        });
-        const transactions = await res.json();
-        return { transactions };
-    } catch (e) {
-        console.log(e);
-
-    }}
+    export let data;
+    let transactions = data.transactions;
 
 </script>
 
@@ -89,7 +75,7 @@
         </TableHead>
         <TableBody class=" divide-y">
 
-            {#each getTransactions() as transaction}
+            {#each transactions as transaction}
                 <TableBodyRow >
                     <TableBodyCell class="border">{transaction.name}</TableBodyCell>
                     <TableBodyCell class="border">{transaction.hash}</TableBodyCell>
