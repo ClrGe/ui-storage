@@ -1,6 +1,5 @@
-
 /** @type {import('./$types').PageLoad} */
-export async function load({ fetch }) {
+export async function load({fetch}) {
 
     try {
         const res = await fetch(`http://localhost:3000/api/transactions/`, {
@@ -9,7 +8,7 @@ export async function load({ fetch }) {
             }
         });
         const transactions = await res.json();
-        return { transactions };
+        return {transactions};
     } catch (e) {
         console.log(e);
 
