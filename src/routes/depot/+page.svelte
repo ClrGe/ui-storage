@@ -1,12 +1,12 @@
 <style global>
-    @import '../../node_modules/filepond/dist/filepond.css';
-    @import '../../node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+    @import '../../../node_modules/filepond/dist/filepond.css';
+    @import '../../../node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 </style>
 
 <script>
     import {Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell} from "flowbite-svelte";
 
-    /** @type {import('./$types').PageData} */
+    /** @type {import('../../../.svelte-kit/types/src/routes').PageData} */
     import FilePond, { registerPlugin } from 'svelte-filepond';
     import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
     import {env} from '$env/dynamic/public';

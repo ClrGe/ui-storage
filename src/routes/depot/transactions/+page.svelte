@@ -1,7 +1,7 @@
 <script>
     import {Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell} from "flowbite-svelte";
 
-    /** @type {import('./$types').PageData} */
+    /** @type {import('../../../../.svelte-kit/types/src/routes').PageData} */
 export let data;
 let transactions = data.transactions;
 </script>

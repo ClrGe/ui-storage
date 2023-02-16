@@ -1,6 +1,6 @@
 import {env} from "$env/dynamic/public";
 
-/** @type {import('./$types').PageLoad} */
+/** @type {import('../../../.svelte-kit/types/src/routes').PageLoad} */
 export async function load({ fetch }) {
 
     try {

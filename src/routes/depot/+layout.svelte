@@ -1,6 +1,6 @@
 <script lang="ts">
-  import '../app.postcss';
-  import {session} from "../stores/stores.ts";
+  import '../../app.postcss';
+  import {session} from "../../stores/stores.ts";
 
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
@@ -82,7 +82,7 @@
       <Chevron><User/></Chevron>
     </Button>
     <Dropdown>
-      <DropdownItem><a href=".">Dépôt</a></DropdownItem>
+      <DropdownItem><a href="..">Dépôt</a></DropdownItem>
       <DropdownItem><a href="/transactions">Transactions</a></DropdownItem>
       <DropdownItem><a href="/options">Paramètres</a></DropdownItem>
       <DropdownDivider/>
@@ -148,7 +148,7 @@
     </main>
   </div>
   {:else}
-  <div class="!bg-black h-screen absolute mt-0">
+  <div class="!bg-black h-screen w-screen absolute mt-0">
     <Login />
 
   </div>
