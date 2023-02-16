@@ -70,7 +70,7 @@
 {#if sessionValue === "true"}
   <Navbar let:hidden let:toggle >
     <NavHamburger on:click={toggleDrawer} btnClass="ml-3 lg:hidden" />
-    <NavBrand href="/" class="lg:ml-16">
+    <NavBrand href="." class="lg:ml-16">
       <Cog />
       <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white pl-4">
         Service de dépôt
@@ -82,11 +82,11 @@
       <Chevron><User/></Chevron>
     </Button>
     <Dropdown>
-      <DropdownItem><a href="/">Dépôt</a></DropdownItem>
+      <DropdownItem><a href=".">Dépôt</a></DropdownItem>
       <DropdownItem><a href="/transactions">Transactions</a></DropdownItem>
       <DropdownItem><a href="/options">Paramètres</a></DropdownItem>
       <DropdownDivider/>
-      <DropdownItem><Button href="" class="font-bold !bg-transparent">Deconnexion</Button></DropdownItem>
+      <DropdownItem><Button  class="font-bold !bg-transparent">Deconnexion</Button></DropdownItem>
     </Dropdown>
     </NavUl>
 

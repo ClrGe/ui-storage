@@ -25,7 +25,7 @@
             )        })
         if (res.ok) {
             await otpForm()
-            goto('/')
+            goto('.')
         } else {
             alert("Identifiants incorrects")
         }
@@ -69,7 +69,7 @@
 
     async function redirect(){
         session.set("true")
-        goto('/')
+        goto('.')
     }
 </script>
 
