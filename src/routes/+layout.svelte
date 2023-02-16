@@ -87,7 +87,7 @@
                 <DropdownItem><a href="/options">Paramètres</a></DropdownItem>
                 <DropdownDivider/>
                 <DropdownItem>
-                    <Button class="font-bold !bg-gray-900 !bg-transparent">Deconnexion</Button>
+                    <Button class="font-bold !bg-gray-900">Deconnexion</Button>
                 </DropdownItem>
             </Dropdown>
         </NavUl>
