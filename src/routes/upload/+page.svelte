@@ -1,6 +1,6 @@
 <style global>
-    @import '../../../../node_modules/filepond/dist/filepond.css';
-    @import '../../../../node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+    @import '../../../node_modules/filepond/dist/filepond.css';
+    @import '../../../node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 </style>
 
 <script>

@@ -1,6 +1,6 @@
 <style global>
-    @import '../../../node_modules/filepond/dist/filepond.css';
-    @import '../../../node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+    @import '../../node_modules/filepond/dist/filepond.css';
+    @import '../../node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 </style>
 
 <script>
@@ -13,6 +13,7 @@
 
     import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
     import {Button, Checkbox, Chevron, Dropdown, DropdownDivider, DropdownItem, Helper} from "flowbite-svelte";
+    import {get} from "svelte/store";
     registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
     let pond;
     let name = 'filepond';
@@ -47,7 +48,6 @@
 
     }}
 
-    let transactions = getTransactions();
 </script>
 
 <div class="app container flex flex-col">
@@ -80,7 +80,7 @@
     />
 
 
-    <Table striped={true} bordered={true} hover={true} data={transactions} >
+    <Table striped={true} bordered={true} hover={true}>
         <TableHead class="!border-gray-800 border-2 bg-gray-200 !text-gray-600">
             <TableHeadCell class="border-gray-800  border-2">Reference</TableHeadCell>
             <TableHeadCell class="border-gray-800 border-2">Hash</TableHeadCell>
@@ -89,7 +89,7 @@
         </TableHead>
         <TableBody class=" divide-y">
 
-            {#each transactions as transaction}
+            {#each getTransactions() as transaction}
                 <TableBodyRow >
                     <TableBodyCell class="border">{transaction.name}</TableBodyCell>
                     <TableBodyCell class="border">{transaction.hash}</TableBodyCell>
