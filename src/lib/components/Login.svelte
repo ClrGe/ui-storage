@@ -1,5 +1,5 @@
 <script>
-    import {session, token} from "../stores/stores.js";
+    import {session, token} from "../../stores/stores.js";
     import {goto} from "$app/navigation";
     import {env} from '$env/dynamic/public';
     import {Button, Card, Input, Label} from "flowbite-svelte";
@@ -31,12 +31,12 @@
             const data = await res.json();
             token.set(data.token)
             session.set("true")
-            document.cookie  = 'token=' + data.token + '; Domain='+ env.PUBLIC_DOMAIN +'; Path=/; SameSite=Strict; Secure';
+            document.cookie = 'token=' + data.token + '; Domain=' + env.PUBLIC_DOMAIN + '; Path=/; SameSite=Strict; Secure';
 
             document.location.reload();
 
             goto('/')
-        } else if (res.status === 401){
+        } else if (res.status === 401) {
             sessionValue = 'false';
             const warning = document.querySelector(".warning");
 
@@ -44,6 +44,7 @@
             alert(warning)
         }
     }
+
     async function register() {
         let url = env.PUBLIC_SERVER + "/register";
 
@@ -103,7 +104,8 @@
 
             <div class="px-16 py-4"><h1 class="text-2xl font-extrabold text-center ">Service de dépôt</h1></div>
 
-            <div class="h-20 !warning hidden py-4"><p class="text-2xl font-extrabold  text-red-800 text-center ">Identifiants incorrects !</p></div>
+            <div class="h-20 !warning hidden py-4"><p class="text-2xl font-extrabold  text-red-800 text-center ">
+                Identifiants incorrects !</p></div>
 
             <Label class="!mt-4  space-y-2">
                 <span class="font-extrabold  !text-gray-600">Email</span>
@@ -112,7 +114,8 @@
             </Label>
             <Label class="!mt-4  space-y-2">
                 <span class="font-extrabold  !text-gray-600 ">Mot de passe</span>
-                <Input class="!mb-2 border-none !bg-gray-100 block !shadow-lg py-2 !text-gray-900" id="password" name="password"
+                <Input class="!mb-2 border-none !bg-gray-100 block !shadow-lg py-2 !text-gray-900" id="password"
+                       name="password"
                        placeholder="•••••" required type="password"/>
             </Label>
             <Button class="w-full !bg-gray-500 hover:!scale-110" on:click={login} type="submit">Se connecter</Button>
@@ -129,12 +132,14 @@
             </Label>
             <Label class="space-y-2">
                 <span class="font-extrabold  !text-gray-500">Email</span>
-                <Input class="!mb-2 py-2 !w-full !bg-gray-100 !shadow-lg !text-gray-900 border-none" id="email" name="email"
+                <Input class="!mb-2 py-2 !w-full !bg-gray-100 !shadow-lg !text-gray-900 border-none" id="email"
+                       name="email"
                        placeholder="exemple@toto.fr" required type="email"/>
             </Label>
             <Label class="space-y-2">
                 <span class="font-extrabold  !text-gray-400">Téléphone</span>
-                <Input class="!mb-2 py-2 !w-full !bg-gray-100 !shadow-lg !text-gray-900 border-none" id="phone" name="phone"
+                <Input class="!mb-2 py-2 !w-full !bg-gray-100 !shadow-lg !text-gray-900 border-none" id="phone"
+                       name="phone"
                        placeholder="+3300000000" required type="phone"/>
             </Label>
             <Label class="space-y-2">
@@ -144,7 +149,8 @@
             </Label>
             <Label class="space-y-2">
                 <span class="font-extrabold  !text-gray-500 ">Confirmation du mot de passe</span>
-                <Input class="!mb-4 border-none !bg-gray-100 block !text-gray-900 !shadow-lg py-2" id="confirm" name="confirm"
+                <Input class="!mb-4 border-none !bg-gray-100 block !text-gray-900 !shadow-lg py-2" id="confirm"
+                       name="confirm"
                        placeholder="•••••" required type="password"/>
             </Label>
 

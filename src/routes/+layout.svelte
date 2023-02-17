@@ -2,28 +2,24 @@
     import '../app.postcss';
     import {page} from '$app/stores';
     import {onMount} from 'svelte';
-    import Header from "$lib/Header.svelte";
-    import Drawer from "$lib/Drawer.svelte";
-    import {Button, Card, Input, Label} from "flowbite-svelte";
-    import {env} from "$env/dynamic/public";
-    import {goto} from "$app/navigation";
-    import {session, token} from "../stores/stores";
+    import Header from "$lib/components/Header.svelte";
+    import Drawer from "$lib/components/Drawer.svelte";
+    import {token} from "../stores/stores";
     import {browser} from "$app/environment";
-    import Login from "$lib/Login.svelte";
+    import Login from "$lib/components/Login.svelte";
 
     let sessionValue = 'false',
-        tokenValue              = $token,
-        breakPoint              = 1024,
+        tokenValue = $token,
+        breakPoint = 1024,
         width,
         email,
         password,
-        backdrop                = false,
-        activateClickOutside    = true,
-        drawerHidden            = false;
+        activateClickOutside = true,
+        drawerHidden = false;
 
 
     $: activeUrl = $page.url.pathname;
-    if(browser) {
+    if (browser) {
         if (document.cookie.includes("token")) {
             sessionValue = 'true';
         }
@@ -57,17 +53,16 @@
 
 </script>
 
-<svelte:window bind:innerWidth={width}/>
-{#if sessionValue ===  'true'}
+<svelte:window width="auto"/>
+{#if sessionValue === 'true'}
+
     <Header/>
 
-    <div class="h-4 m-0 w-full border-2 bg-gray-100 !shadow-lg shadow-inner">
-    <Drawer />
-    <div class="flex !shadow-lg px-4 h-screen w-screen bg-gray-300 ">
-        <main class=" w-4/4  ml-auto mr-auto">
+    <Drawer/>
+    <div class="flex !shadow-lg px-4 h-screen w-screen bg-gray-200 ">
+        <main class=" w-screen  ml-auto mr-auto">
             <slot/>
         </main>
-    </div>
     </div>
 
 {:else}

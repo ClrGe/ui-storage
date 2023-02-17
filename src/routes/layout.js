@@ -3,7 +3,7 @@ import {get} from "svelte/store";
 import {session} from "../stores/stores.js"
 
 /** @type {import('./$types').PageLoad} */
-export async function load({fetch })  {
+export async function load({fetch}) {
     let sessionValue = get(session);
     session.subscribe(value => {
         sessionValue = value;
@@ -28,15 +28,14 @@ export async function load({fetch })  {
         if (auth.ok) {
             session.set('true');
 
-            sessionValue ='true';
+            sessionValue = 'true';
 
         } else {
             session.set('false');
         }
 
 
-
-        return { session };
+        return {session};
 
     } catch (e) {
         console.log(e);
