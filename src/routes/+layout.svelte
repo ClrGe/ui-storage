@@ -129,7 +129,6 @@
 </script>
 
 <svelte:window bind:innerWidth={width}/>
-<h1>{sessionValue}</h1>
 {#if sessionValue ===  'true'}
     <Header/>
 
