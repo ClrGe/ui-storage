@@ -1,5 +1,5 @@
 <script>
-    import {session} from "../stores/stores.js";
+    import {session, token} from "../stores/stores.js";
     import {goto} from "$app/navigation";
     import {env} from '$env/dynamic/public';
     import {Button, Card, Input, Label} from "flowbite-svelte";
@@ -8,6 +8,7 @@
     session.subscribe(value => {
         sessionValue = value;
     });
+
 
     async function login() {
 
@@ -26,16 +27,23 @@
                 }
             )
         })
-        if (res.ok) {
-            sessionValue = 'true';
-            await otpForm()
+        if (res.status === 200) {
+            const data = await res.json();
+            token.set(data.token)
+            session.set("true")
+            document.cookie  = 'token=' + data.token + '; Domain='+ env.PUBLIC_DOMAIN +'; Path=/; SameSite=Strict; Secure';
+
+            document.location.reload();
+
             goto('/')
-        } else {
+        } else if (res.status === 401){
             sessionValue = 'false';
-            alert("Identifiants incorrects")
+            const warning = document.querySelector(".warning");
+
+            warning.classList.remove("hidden")
+            alert(warning)
         }
     }
-
     async function register() {
         let url = env.PUBLIC_SERVER + "/register";
 
@@ -81,69 +89,78 @@
 
     async function redirect() {
         session.set("true")
-        await goto('/transactions')
+        await goto('/')
     }
 </script>
 
 <div class="">
 
-    <Card class="!shadow-lg !bg-gray-200 !text-gray-600 login">
-        <div class="px-16 py-4"><h1 class="text-2xl font-extrabold text-center ">Service de dépôt</h1></div>
-        <Label class="!mt-4  space-y-2">
-            <span class="font-extrabold  !text-gray-600">Email</span>
-            <Input class="!mb-2 py-2 !w-full border-none !bg-gray-100 !shadow-lg  !text-gray-900" id="email"
-                   name="email" placeholder="exemple@toto.fr" required type="email"/>
-        </Label>
-        <Label class="!mt-4  space-y-2">
-            <span class="font-extrabold  !text-gray-600 ">Mot de passe</span>
-            <Input class="!mb-2 border-none !bg-gray-100 !shadow-lg py-2 !text-gray-900" id="password" name="password"
-                   placeholder="•••••" required type="password"/>
-        </Label>
-        <Button class="w-full !bg-gray-500 hover:!scale-110" on:click={login} type="submit">Se connecter</Button>
-        <p class="mt-6 text-center text-lg font-extrabold">Pas encore inscrit ?</p>
-        <Button class="w-full mt-2 !bg-red-800 hover:!scale-110" on:click={showForm}>S'inscrire</Button>
-    </Card>
+    <div class="!bg-black h-screen w-screen flex justify-center items-center absolute mt-0">
 
-    <Card class="!shadow-lg !bg-gray-200 !text-gray-600 form hidden">
-        <div class="px-16 py-2"><h1 class="text-2xl font-extrabold text-center ">Inscription</h1></div>
-        <Label class="!mt-4  space-y-2">
-            <span class="font-extrabold  !text-gray-500">Nom d'utilisateur</span>
-            <Input class="!mb-2 py-2 !w-full !bg-gray-100 border-none !shadow-lg  !text-gray-900" id="regEmail"
-                   name="regEmail" placeholder="toto" required type="email"/>
-        </Label>
-        <Label class="space-y-2">
-            <span class="font-extrabold  !text-gray-500">Email</span>
-            <Input class="!mb-2 py-2 !w-full !bg-gray-100 !shadow-lg !text-gray-900 border-none" id="email" name="email"
-                   placeholder="exemple@toto.fr" required type="email"/>
-        </Label>
-        <Label class="space-y-2">
-            <span class="font-extrabold  !text-gray-400">Téléphone</span>
-            <Input class="!mb-2 py-2 !w-full !bg-gray-100 !shadow-lg !text-gray-900 border-none" id="phone" name="phone"
-                   placeholder="+3300000000" required type="phone"/>
-        </Label>
-        <Label class="space-y-2">
-            <span class="font-extrabold  !text-gray-500 ">Mot de passe</span>
-            <Input class="!mb-2 border-none !bg-gray-100 !text-gray-900 !shadow-lg py-2" id="regPassword"
-                   name="regPassword" placeholder="•••••" required type="password"/>
-        </Label>
-        <Label class="space-y-2">
-            <span class="font-extrabold  !text-gray-500 ">Confirmation du mot de passe</span>
-            <Input class="!mb-4 border-none !bg-gray-100 !text-gray-900 !shadow-lg py-2" id="confirm" name="confirm"
-                   placeholder="•••••" required type="password"/>
-        </Label>
+        <Card class="!shadow-lg !bg-gray-200 !text-gray-600 login">
 
-        <Button class="w-full mt-2 !bg-red-800 hover:!scale-110" on:click={register}>S'inscrire</Button>
+            <div class="px-16 py-4"><h1 class="text-2xl font-extrabold text-center ">Service de dépôt</h1></div>
 
-    </Card>
+            <div class="h-20 !warning hidden py-4"><p class="text-2xl font-extrabold  text-red-800 text-center ">Identifiants incorrects !</p></div>
 
-    <Card class="!shadow-lg !bg-gray-200 !text-gray-600 otp hidden">
-        <Label class="space-y-2">
-            <span class="font-extrabold  !text-gray-500 ">OTP</span>
-            <Input class="!mb-4 border-none !bg-gray-100 !text-gray-900 !shadow-lg py-2" id="otp" name="otp"
-                   placeholder="1234" required type="text"/>
-        </Label>
+            <Label class="!mt-4  space-y-2">
+                <span class="font-extrabold  !text-gray-600">Email</span>
+                <Input class="!mb-2 py-2 !w-full border-none !bg-gray-100 !shadow-lg  !text-gray-900" id="email"
+                       name="email" placeholder="exemple@toto.fr" required type="email"/>
+            </Label>
+            <Label class="!mt-4  space-y-2">
+                <span class="font-extrabold  !text-gray-600 ">Mot de passe</span>
+                <Input class="!mb-2 border-none !bg-gray-100 !shadow-lg py-2 !text-gray-900" id="password" name="password"
+                       placeholder="•••••" required type="password"/>
+            </Label>
+            <Button class="w-full !bg-gray-500 hover:!scale-110" on:click={login} type="submit">Se connecter</Button>
+            <p class="mt-6 text-center text-lg font-extrabold">Pas encore inscrit ?</p>
+            <Button class="w-full mt-2 !bg-red-800 hover:!scale-110" on:click={showForm}>S'inscrire</Button>
+        </Card>
 
-        <Button class="w-full mt-2 !bg-red-800 hover:!scale-110" on:click={redirect}>Confirmer</Button>
+        <Card class="!shadow-lg !bg-gray-200 !text-gray-600 form hidden">
+            <div class="px-16 py-2"><h1 class="text-2xl font-extrabold text-center ">Inscription</h1></div>
+            <Label class="!mt-4  space-y-2">
+                <span class="font-extrabold  !text-gray-500">Nom d'utilisateur</span>
+                <Input class="!mb-2 py-2 !w-full !bg-gray-100 border-none !shadow-lg  !text-gray-900" id="regEmail"
+                       name="regEmail" placeholder="toto" required type="email"/>
+            </Label>
+            <Label class="space-y-2">
+                <span class="font-extrabold  !text-gray-500">Email</span>
+                <Input class="!mb-2 py-2 !w-full !bg-gray-100 !shadow-lg !text-gray-900 border-none" id="email" name="email"
+                       placeholder="exemple@toto.fr" required type="email"/>
+            </Label>
+            <Label class="space-y-2">
+                <span class="font-extrabold  !text-gray-400">Téléphone</span>
+                <Input class="!mb-2 py-2 !w-full !bg-gray-100 !shadow-lg !text-gray-900 border-none" id="phone" name="phone"
+                       placeholder="+3300000000" required type="phone"/>
+            </Label>
+            <Label class="space-y-2">
+                <span class="font-extrabold  !text-gray-500 ">Mot de passe</span>
+                <Input class="!mb-2 border-none !bg-gray-100 !text-gray-900 !shadow-lg py-2" id="regPassword"
+                       name="regPassword" placeholder="•••••" required type="password"/>
+            </Label>
+            <Label class="space-y-2">
+                <span class="font-extrabold  !text-gray-500 ">Confirmation du mot de passe</span>
+                <Input class="!mb-4 border-none !bg-gray-100 !text-gray-900 !shadow-lg py-2" id="confirm" name="confirm"
+                       placeholder="•••••" required type="password"/>
+            </Label>
 
-    </Card>
+            <Button class="w-full mt-2 !bg-red-800 hover:!scale-110" on:click={register}>S'inscrire</Button>
+
+        </Card>
+
+        <Card class="!shadow-lg !bg-gray-200 !text-gray-600 otp hidden">
+            <Label class="space-y-2">
+
+                <span class="font-extrabold  !text-gray-500 ">OTP</span>
+                <Input class="!mb-4 border-none !bg-gray-100 !text-gray-900 !shadow-lg py-2" id="otp" name="otp"
+                       placeholder="1234" required type="text"/>
+            </Label>
+
+            <Button class="w-full mt-2 !bg-red-800 hover:!scale-110" on:click={redirect}>Confirmer</Button>
+
+        </Card>
+
+    </div>
 </div>
