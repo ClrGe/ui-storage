@@ -64,7 +64,9 @@
             const data = await res.json();
             token.set(data.token)
             session.set("true")
-            document.cookie  = 'token=' + data.token + '; Domain=jmg-conseil.eu; Path=/; SameSite=Strict; Secure';
+            document.cookie  = 'token=' + data.token + '; Domain='+ env.PUBLIC_DOMAIN +'; Path=/; SameSite=Strict; Secure';
+
+            document.location.reload();
 
             goto('/')
         } else {
