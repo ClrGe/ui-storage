@@ -11,7 +11,7 @@ export async function load({fetch })  {
 
 
     try {
-        const res = await fetch(`http://localhost:3000/api/transactions/`, {
+        const res = await fetch(env.PUBLIC_SERVER +`/transactions/`, {
             headers: {
                 "Content-Type": "application/json",
                     "Authorization": "Bearer " + document.cookie.split('=')[1]

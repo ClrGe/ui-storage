@@ -21,11 +21,6 @@
     $: activeUrl = $page.url.pathname;
 
 
-    if (browser) {
-      if(document.cookie.includes('isConnected=true')) {
-          sessionValue = 'true';
-      }
-    }
     token.subscribe(value => {
         tokenValue = value;
     });
@@ -69,10 +64,8 @@
             const data = await res.json();
             token.set(data.token)
             session.set("true")
-            document.cookie  = 'isConnected=true';
             document.cookie  = 'token=' + data.token;
 
-            sessionValue = 'true';
             goto('/')
         } else {
             sessionValue = 'false';
@@ -126,6 +119,11 @@
         await goto('/')
     }
 
+    if(browser) {
+        if (document.cookie.includes("token")) {
+            sessionValue = 'true';
+        }
+    }
 
 
 </script>
