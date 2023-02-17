@@ -88,6 +88,8 @@
     }
 
     async function redirect() {
+        document.location.reload();
+
         session.set("true")
         await goto('/')
     }
