@@ -1,5 +1,5 @@
 <script>
-    import {session} from "../stores/stores.ts";
+    import {session} from "../stores/stores.js";
     import {goto} from "$app/navigation";
     import {env} from '$env/dynamic/public';
     import {Button, Card, Input, Label} from "flowbite-svelte";
@@ -27,9 +27,11 @@
             )
         })
         if (res.ok) {
+            sessionValue = 'true';
             await otpForm()
             goto('/')
         } else {
+            sessionValue = 'false';
             alert("Identifiants incorrects")
         }
     }
@@ -79,7 +81,7 @@
 
     async function redirect() {
         session.set("true")
-        goto('/')
+        await goto('/transactions')
     }
 </script>
 
@@ -97,7 +99,7 @@
             <Input class="!mb-2 border-none !bg-gray-100 !shadow-lg py-2 !text-gray-900" id="password" name="password"
                    placeholder="•••••" required type="password"/>
         </Label>
-        <Button class="w-full !bg-gray-500 hover:!scale-110" on:click={register} type="submit">Se connecter</Button>
+        <Button class="w-full !bg-gray-500 hover:!scale-110" on:click={login} type="submit">Se connecter</Button>
         <p class="mt-6 text-center text-lg font-extrabold">Pas encore inscrit ?</p>
         <Button class="w-full mt-2 !bg-red-800 hover:!scale-110" on:click={showForm}>S'inscrire</Button>
     </Card>
