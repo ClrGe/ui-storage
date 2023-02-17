@@ -111,12 +111,12 @@
 
             <Label class="!mt-4  space-y-2">
                 <span class="font-extrabold  !text-gray-600">Email</span>
-                <Input class="!mb-2 py-2 !w-full border-none !bg-gray-100 !shadow-lg  !text-gray-900" id="email"
+                <Input class="!mb-2 py-2 !w-full border-none  !bg-gray-100 !shadow-lg  !text-gray-900" id="email"
                        name="email" placeholder="exemple@toto.fr" required type="email"/>
             </Label>
             <Label class="!mt-4  space-y-2">
                 <span class="font-extrabold  !text-gray-600 ">Mot de passe</span>
-                <Input class="!mb-2 border-none !bg-gray-100 block !shadow-lg py-2 !text-gray-900" id="password"
+                <Input class="!mb-2 border-none block !bg-gray-100 block !shadow-lg py-2 !text-gray-900" id="password"
                        name="password"
                        placeholder="•••••" required type="password"/>
             </Label>
@@ -146,12 +146,12 @@
             </Label>
             <Label class="space-y-2">
                 <span class="font-extrabold  !text-gray-500 ">Mot de passe</span>
-                <Input class="!mb-2 border-none !bg-gray-100 block !text-gray-900 !shadow-lg py-2" id="regPassword"
+                <Input class="!mb-2 border-none block !bg-gray-100 block !text-gray-900 !shadow-lg py-2" id="regPassword"
                        name="regPassword" placeholder="•••••" required type="password"/>
             </Label>
             <Label class="space-y-2">
                 <span class="font-extrabold  !text-gray-500 ">Confirmation du mot de passe</span>
-                <Input class="!mb-4 border-none !bg-gray-100 block !text-gray-900 !shadow-lg py-2" id="confirm"
+                <Input class="!mb-4 border-none block !bg-gray-100 block !text-gray-900 !shadow-lg py-2" id="confirm"
                        name="confirm"
                        placeholder="•••••" required type="password"/>
             </Label>
