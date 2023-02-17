@@ -133,7 +133,7 @@
     </div>
 </div>
 
-<div class=relative bg-white shadow-lg sm:rounded-lg mb-6>
+<div class="relative bg-white shadow-lg sm:rounded-lg mb-6">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <Table bordered={true} class="!rounded-lg" hover={true} striped={true}>
             <TableHead class="!border-gray-500  bg-gray-600 !text-white">

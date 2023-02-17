@@ -42,6 +42,8 @@
 
             warning.classList.remove("hidden")
             alert(warning)
+        } else {
+            alert("Erreur lors de la connexion")
         }
     }
 
