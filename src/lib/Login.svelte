@@ -112,7 +112,7 @@
             </Label>
             <Label class="!mt-4  space-y-2">
                 <span class="font-extrabold  !text-gray-600 ">Mot de passe</span>
-                <Input class="!mb-2 border-none !bg-gray-100 !shadow-lg py-2 !text-gray-900" id="password" name="password"
+                <Input class="!mb-2 border-none !bg-gray-100 block !shadow-lg py-2 !text-gray-900" id="password" name="password"
                        placeholder="•••••" required type="password"/>
             </Label>
             <Button class="w-full !bg-gray-500 hover:!scale-110" on:click={login} type="submit">Se connecter</Button>
@@ -139,12 +139,12 @@
             </Label>
             <Label class="space-y-2">
                 <span class="font-extrabold  !text-gray-500 ">Mot de passe</span>
-                <Input class="!mb-2 border-none !bg-gray-100 !text-gray-900 !shadow-lg py-2" id="regPassword"
+                <Input class="!mb-2 border-none !bg-gray-100 block !text-gray-900 !shadow-lg py-2" id="regPassword"
                        name="regPassword" placeholder="•••••" required type="password"/>
             </Label>
             <Label class="space-y-2">
                 <span class="font-extrabold  !text-gray-500 ">Confirmation du mot de passe</span>
-                <Input class="!mb-4 border-none !bg-gray-100 !text-gray-900 !shadow-lg py-2" id="confirm" name="confirm"
+                <Input class="!mb-4 border-none !bg-gray-100 block !text-gray-900 !shadow-lg py-2" id="confirm" name="confirm"
                        placeholder="•••••" required type="password"/>
             </Label>
 
