@@ -3,6 +3,8 @@
     import {page} from '$app/stores';
     import {onMount} from 'svelte';
     import Header from "$lib/components/Header.svelte";
+    import Footer from "$lib/components/Footer.svelte";
+
     import Drawer from "$lib/components/Drawer.svelte";
     import {token} from "../stores/stores";
     import {browser} from "$app/environment";
@@ -59,11 +61,16 @@
     <Header/>
 
     <Drawer/>
-    <div class="flex !shadow-lg px-4 h-screen w-screen bg-gray-200 ">
+    <div class="flex !shadow-lg px-4 h-screen w-screen bg-gray-200 mb-56">
         <main class=" w-screen  ml-auto mr-auto">
             <slot/>
         </main>
     </div>
+    <div class="h-90">
+        <Footer/>
+    </div>
+
+
 
 {:else}
     <Login/>

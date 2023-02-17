@@ -77,13 +77,11 @@
 
 
 <div class="app  flex flex-col  relative bg-white shadow-lg sm:rounded-lg my-6 ">
-
-
-    <div class="mt-6  flex flex-row justify-center items-center"><img class="h-24 pr-8 hover:scale-110"
-                                                                      src="src/lib/img/ipfs4.png" alt="IPFS"/><img
-            class="h-24 pr-8 hover:scale-110" src="src/lib/img/fs.png" alt="FS"/><img class=" pr-8 h-24 hover:scale-110"
-                                                                                      src="src/lib/img/s3.png"
-                                                                                      alt="S3"/></div>
+    <div class="mt-6  flex flex-row justify-center items-center">
+        <img class="h-24 pr-8 hover:scale-110" src="src/lib/img/ipfs4.png" alt="IPFS"/>
+        <img class="h-24 pr-8 hover:scale-110" src="src/lib/img/fs.png" alt="FS"/>
+        <img class=" pr-8 h-24 hover:scale-110" src="src/lib/img/s3.png" alt="S3"/>
+    </div>
     <Button class="mt-4 !text-lg w-1/6 !bg-gray-600 ml-auto mr-auto !font-extrabold">
         <Chevron>Options</Chevron>
     </Button>

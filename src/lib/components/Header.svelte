@@ -65,16 +65,16 @@
 </script>
 
 <Navbar let:hidden let:toggle class="bg-gray-800 !w-screen !flex justify-around text-white">
-    <NavHamburger btnClass="ml-3 text-white" on:click={() => (hidden2 = false)}/>
+    <NavHamburger btnClass="ml-3 text-gray-200" on:click={() => (hidden2 = false)}/>
     <NavBrand href=".">
-            <span class="self-center whitespace-nowrap text-2xl font-semibold text-white pl-4 flex">
+            <span class="self-center whitespace-nowrap text-2xl font-semibold text-gray-200 pl-4 flex">
                 <Cog/>
             Service de dépôt
           </span>
     </NavBrand>
     <NavHamburger on:click={toggle}/>
     <NavUl {hidden} {divClass} {ulClass}>
-        <Button class="!bg-white !rounded-full !list-none font-bold tracking-wider !text-gray-900">
+        <Button class="!bg-gray-200 !rounded-full !list-none font-bold tracking-wider !text-gray-900">
             <Chevron>
                 <User/>
             </Chevron>
@@ -91,16 +91,17 @@
     </NavUl>
 </Navbar>
 
-<Drawer transitionType="fly" {transitionParams} bind:hidden={hidden2} id='sidebar2'>
+<Drawer transitionType="fly" {transitionParams} bind:hidden={hidden2} id='sidebar2' class="bg-gray-800 text-white">
     <div class='flex items-center'>
-        <h5 id="drawer-navigation-label-3"
-            class="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">Menu</h5>
+<div class='flex-1 ml-3 whitespace-nowrap text-2xl font-semibold text-gray-200 pl-4 flex'>
+
+        </div>
         <CloseButton on:click={() => (hidden2 = true)} class='mb-4 dark:text-white'/>
     </div>
     <Sidebar>
         <SidebarWrapper divClass='overflow-y-auto py-4 px-3 rounded dark:bg-gray-800'>
             <SidebarGroup>
-                <SidebarItem label="Dashboard">
+                <SidebarItem  class="text-gray-200" label="Dashboard">
                     <svelte:fragment slot="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="w-6 h-6">
@@ -112,7 +113,7 @@
                     </svelte:fragment>
                 </SidebarItem>
                 <DropdownDivider/>
-                <SidebarItem label="Services" {spanClass}>
+                <SidebarItem label="Services"  class="text-gray-200" {spanClass}>
                     <svelte:fragment slot="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="w-6 h-6">
@@ -123,7 +124,7 @@
                     </svelte:fragment>
                 </SidebarItem>
                 <DropdownDivider/>
-                <SidebarItem label="Transactions" {spanClass}>
+                <SidebarItem label="Transactions"  class="text-gray-200" {spanClass}>
                     <svelte:fragment slot="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="w-6 h-6">
@@ -136,7 +137,7 @@
                     </svelte:fragment>
                 </SidebarItem>
                 <DropdownDivider/>
-                <SidebarItem label="Profil">
+                <SidebarItem label="Profil" class="text-gray-200">
                     <svelte:fragment slot="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="w-6 h-6">
@@ -145,7 +146,7 @@
                     </svelte:fragment>
                 </SidebarItem>
                 <DropdownDivider/>
-                <SidebarItem label="Paramètres">
+                <SidebarItem label="Paramètres" class="text-gray-200">
                     <svelte:fragment slot="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="w-6 h-6">
@@ -153,8 +154,8 @@
                         </svg>
                     </svelte:fragment>
                 </SidebarItem>
-                <DropdownDivider/>
-                <SidebarItem label="Déconnexion">
+                <DropdownDivider />
+                <SidebarItem label="Déconnexion" class="text-gray-200 font-extrabold">
                     <svelte:fragment slot="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="w-6 h-6">
