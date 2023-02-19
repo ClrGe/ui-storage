@@ -113,7 +113,7 @@
                     </svelte:fragment>
                 </SidebarItem>
                 <DropdownDivider/>
-                <SidebarItem label="Services"  class="text-gray-200" {spanClass}>
+                <SidebarItem label="Services"  class="!text-gray-200" {spanClass}>
                     <svelte:fragment slot="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="w-6 h-6">
@@ -124,7 +124,7 @@
                     </svelte:fragment>
                 </SidebarItem>
                 <DropdownDivider/>
-                <SidebarItem label="Transactions"  class="text-gray-200" {spanClass}>
+                <SidebarItem label="Transactions"  class="!text-gray-200" {spanClass}>
                     <svelte:fragment slot="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="w-6 h-6">
@@ -137,7 +137,7 @@
                     </svelte:fragment>
                 </SidebarItem>
                 <DropdownDivider/>
-                <SidebarItem label="Profil" class="text-gray-200">
+                <SidebarItem label="Profil" class="!text-gray-200">
                     <svelte:fragment slot="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="w-6 h-6">
@@ -146,7 +146,7 @@
                     </svelte:fragment>
                 </SidebarItem>
                 <DropdownDivider/>
-                <SidebarItem label="Paramètres" class="text-gray-200">
+                <SidebarItem label="Paramètres" class="!text-gray-200">
                     <svelte:fragment slot="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="w-6 h-6">
@@ -155,7 +155,7 @@
                     </svelte:fragment>
                 </SidebarItem>
                 <DropdownDivider />
-                <SidebarItem label="Déconnexion" class="text-gray-200 font-extrabold">
+                <SidebarItem label="Déconnexion" class="!text-gray-200 font-extrabold">
                     <svelte:fragment slot="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="w-6 h-6">

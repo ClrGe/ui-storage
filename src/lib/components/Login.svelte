@@ -94,7 +94,8 @@
         document.location.reload();
 
         session.set("true")
-        await goto('/')
+        await document.location.reload();
+
     }
 </script>
 
